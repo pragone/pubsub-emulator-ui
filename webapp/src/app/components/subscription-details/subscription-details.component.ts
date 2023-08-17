@@ -23,7 +23,7 @@ export class SubscriptionDetailsComponent implements OnInit {
   pullMessages(): void {
     console.log('trying to pull messages')
 
-    this.pubsub.fetchMessages(this.subscriptionPath!, 10)
+    this.pubsub.fetchMessages(this.subscriptionPath!, 20)
       .pipe(map(results => results.map(msg => {
         msg.message.data = this.convertMessageData(msg.message.data)
         return msg

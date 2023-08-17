@@ -16,18 +16,27 @@
         <table class="message-table mat-table" *ngIf="this.messages">
             <thead>
                 <tr>
-                    <th>Timestamp</th>
-                    <th>Message</th>
+                    <th style="font-size: smaller;">Attributes</th>
                     <th>Ack</th>
+                    <th>Message</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let msg of this.messages" class="pubsub-message">
-                    <td>{{msg.message.publishTime | date : "long"}}</td>
-                    <td>{{msg.message.data}}</td>
+                    <td>
+                        <dl>
+                            <dt>Timestamp</dt>
+                            <dd>{{msg.message.publishTime | date : "dd/MM/yy, hh:mm:ss.SSS"}}</dd>
+                        </dl>
+                        <dl *ngFor="let item of msg.message.attributes | keyvalue">
+                            <dt>{{item.key}}</dt>
+                            <dd>{{item.value}}</dd>
+                        </dl>
+                    </td>
                     <td>
                         <button mat-button color="warn" (click)="this.ackMessage(msg.ackId)">Ack</button>
                     </td>
+                    <td>{{msg.message.data}}</td>
                 </tr>
             </tbody>
         </table>
