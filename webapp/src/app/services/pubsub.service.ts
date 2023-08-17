@@ -7,10 +7,10 @@ import { NewSubscriptionRequest } from '../components/subscription-list/new-subs
   providedIn: 'root'
 })
 export class PubsubService {
-  project_id = "test-project"
-  public currentHost = "http://localhost:8681"
+  project_id = "dev-project"
+  public currentHost = "http://localhost:8432"
 
-  private _projectList = new BehaviorSubject<string[]>(["test-project"])
+  private _projectList = new BehaviorSubject<string[]>([this.project_id])
   private _currentProject = new ReplaySubject<string>()
   private _currentTopic = new ReplaySubject<Topic>()
   private _currentSubscription = new ReplaySubject<Subscription>()
