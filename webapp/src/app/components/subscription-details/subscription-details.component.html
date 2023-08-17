@@ -16,7 +16,7 @@
         <table class="message-table mat-table" *ngIf="this.messages">
             <thead>
                 <tr>
-                    <th style="font-size: smaller;">Attributes</th>
+                    <th style="font-size: smaller;">Timestamp & Attributes</th>
                     <th>Ack</th>
                     <th>Message</th>
                 </tr>
@@ -36,7 +36,7 @@
                     <td>
                         <button mat-button color="warn" (click)="this.ackMessage(msg.ackId)">Ack</button>
                     </td>
-                    <td>{{msg.message.data}}</td>
+                    <td><pre>{{msg.message.data}}</pre></td>
                 </tr>
             </tbody>
         </table>

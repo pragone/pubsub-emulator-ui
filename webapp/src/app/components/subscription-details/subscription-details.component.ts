@@ -25,7 +25,7 @@ export class SubscriptionDetailsComponent implements OnInit {
 
     this.pubsub.fetchMessages(this.subscriptionPath!, 20)
       .pipe(map(results => results.map(msg => {
-        msg.message.data = this.convertMessageData(msg.message.data)
+        msg.message.data = JSON.stringify(JSON.parse(this.convertMessageData(msg.message.data)), undefined, 2)
         return msg
       })))
       .subscribe(results => {
